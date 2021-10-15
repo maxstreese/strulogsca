@@ -1,0 +1,47 @@
+
+<configuration>
+
+    <statusListener class="ch.qos.logback.core.status.NopStatusListener"/>
+
+    <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+          <providers>
+            <timestamp>
+              <fieldName>timestamp</fieldName>
+              <timeZone>UTC</timeZone>
+            </timestamp>
+            <message/>
+            <loggerName>
+              <fieldName>logger</fieldName>
+            </loggerName>
+            <threadName>
+              <fieldName>thread</fieldName>
+            </threadName>
+            <logLevel>
+              <fieldName>level</fieldName>
+            </logLevel>
+            <arguments>
+              <fieldName>arguments</fieldName>
+            </arguments>
+            <mdc>
+              <fieldName>mdc</fieldName>
+            </mdc>
+            <stackTrace>
+              <fieldName>stackTrace</fieldName>
+            </stackTrace>
+            <stackHash>
+              <fieldName>stackHash</fieldName>
+            </stackHash>
+            <throwableClassName>
+              <fieldName>throwableClass</fieldName>
+            </throwableClassName>
+          </providers>
+          <jsonGeneratorDecorator class="net.logstash.logback.decorate.PrettyPrintingJsonGeneratorDecorator"/>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="STDOUT" />
+    </root>
+
+</configuration>
